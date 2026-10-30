@@ -1,0 +1,11 @@
+{
+  "name": "Wanderly – Gemma 4 Travel Planner",
+  "short_name": "Wanderly",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f5fb",
+  "theme_color": "#5b47e0",
+  "icons": [
+    { "src": "/static/img/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
