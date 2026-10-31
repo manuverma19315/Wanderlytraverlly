@@ -18,6 +18,9 @@ const ROUTES = {
   more: ['./views/more.js', 'More'],
 };
 
+// Pages reached through the mobile "More" menu; its tab stays highlighted on them.
+const MORE_ROUTES = ['more', 'discover', 'foryou', 'trips', 'trip', 'demo', 'settings'];
+
 let cleanup = null;
 
 function parseHash() {
@@ -34,7 +37,13 @@ async function route() {
   if (typeof cleanup === 'function') { try { cleanup(); } catch { /* ignore */ } }
   cleanup = null;
 
-  $$('[data-route]').forEach(a => a.classList.toggle('active', a.dataset.route === (ROUTES[name] ? name : '')));
+  const current = ROUTES[name] ? name : '';
+  $$('[data-route]').forEach(a => {
+    const on = a.dataset.route === current || (a.dataset.route === 'trips' && current === 'trip');
+    a.classList.toggle('active', on);
+    if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  $('.bottom-nav [data-route="more"]').classList.toggle('active', MORE_ROUTES.includes(current));
   $('#page-title').textContent = entry[1];
   document.title = `${entry[1]} · Wanderly`;
 
@@ -68,8 +77,12 @@ window.addEventListener('store:settings', syncDemoSwitch);
 
 // ---------------------------------------------------------------- AI status
 
+function setStatus(state, text) {
+  $('#ai-dot').dataset.state = state;
+  $('#ai-status').textContent = text;
+}
+
 async function checkStatus() {
-  const el = $('#ai-status');
   const s = store.settings;
   try {
     const h = await (await fetch('/api/health')).json();
@@ -78,14 +91,23 @@ async function checkStatus() {
     if (h.server_keys.google) sources.push('server AI Studio key');
     if (s.openrouterKey) sources.push('your OpenRouter key');
     if (h.server_keys.openrouter) sources.push('server OpenRouter key');
-    el.innerHTML = sources.length
-      ? `🟢 Ready via ${sources[0]}${sources.length > 1 ? ` (+${sources.length - 1} fallback)` : ''}`
-      : '🟡 No API key yet. <a href="#/settings">Add one</a> or use Demo.';
+    if (sources.length) setStatus('ok', `Ready via ${sources[0]}${sources.length > 1 ? ` (+${sources.length - 1} fallback)` : ''}`);
+    else setStatus('warn', 'No API key yet. Add one in Settings or use Demo.');
   } catch {
-    el.innerHTML = '🔴 Offline. Demo mode still works.';
+    setStatus('err', 'Offline. Demo mode still works.');
   }
 }
 window.addEventListener('store:settings', checkStatus);
+
+// ---------------------------------------------------------------- trips badge
+
+function syncTripsCount() {
+  const n = store.trips.length;
+  const el = $('#trips-count');
+  el.textContent = n;
+  el.classList.toggle('hidden', !n);
+}
+window.addEventListener('store:trips', syncTripsCount);
 
 // ---------------------------------------------------------------- boot
 
@@ -94,6 +116,7 @@ window.addEventListener('online', () => { toast('Back online'); checkStatus(); }
 window.addEventListener('offline', () => toast('You are offline. Turn on Demo mode to keep exploring.', 'err'));
 
 syncDemoSwitch();
+syncTripsCount();
 checkStatus();
 route();
 

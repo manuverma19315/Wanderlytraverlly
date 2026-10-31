@@ -145,8 +145,9 @@ export function renderMap(el, points, { center, me, route = true } = {}) {
   el.innerHTML = '';
   const map = L.map(el, { scrollWheelZoom: false, zoomControl: true });
   el._map = map;
-  const tiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19,
+  // CARTO basemaps now return an "API key required" watermark, so use the public OSM tiles.
+  const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 19,
   }).addTo(map);
   let tileErrors = 0;
   tiles.on('tileerror', () => {

@@ -1,6 +1,6 @@
 // Offline support: cache the app shell + demo assets so the demo opens without internet.
 // API calls are never cached (always network); static files use stale-while-revalidate.
-const CACHE = 'wanderly-v1';
+const CACHE = 'wanderly-v2';
 const SHELL = [
   '/', '/manifest.json',
   '/static/css/styles.css',

@@ -16,30 +16,34 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#view">Skip to content</a>
   <div class="app">
     <aside class="sidebar" aria-label="Main navigation">
-      <a class="brand" href="#/">
-        <span class="brand-logo">🧭</span>
-        <span>Wanderly<small>POWERED BY GEMMA 4</small></span>
+      <a class="brand" href="#/" aria-label="Wanderly home">
+        <span class="brand-logo" aria-hidden="true">🧭</span>
+        <span class="brand-text"><span class="brand-name">Wanderly</span><small>Powered by Gemma 4</small></span>
       </a>
-      <div class="nav-section">Plan</div>
-      <a class="nav-link" href="#/" data-route=""><span class="ic">🏠</span>Home</a>
-      <a class="nav-link" href="#/plan" data-route="plan"><span class="ic">🗺️</span>Plan a trip</a>
-      <a class="nav-link" href="#/discover" data-route="discover"><span class="ic">✨</span>Find my destination</a>
-      <a class="nav-link" href="#/trips" data-route="trips"><span class="ic">🧳</span>My trips</a>
-      <div class="nav-section">Explore</div>
-      <a class="nav-link" href="#/nearby" data-route="nearby"><span class="ic">📍</span>Nearby places</a>
-      <a class="nav-link" href="#/lens" data-route="lens"><span class="ic">📷</span>Travel Lens</a>
-      <a class="nav-link" href="#/foryou" data-route="foryou"><span class="ic">💜</span>For you</a>
-      <a class="nav-link" href="#/chat" data-route="chat"><span class="ic">💬</span>Travel buddy</a>
-      <div class="nav-section">App</div>
-      <a class="nav-link" href="#/demo" data-route="demo"><span class="ic">🎬</span>Demo showcase</a>
-      <a class="nav-link" href="#/settings" data-route="settings"><span class="ic">⚙️</span>Settings</a>
+      <a class="btn btn-hero sidebar-cta" href="#/plan" title="Plan a new trip"><span aria-hidden="true">✈️</span><span class="label">New trip</span></a>
+      <nav class="nav">
+        <div class="nav-section">Plan</div>
+        <a class="nav-link" href="#/" data-route="" title="Home"><span class="ic" aria-hidden="true">🏠</span><span class="label">Home</span></a>
+        <a class="nav-link" href="#/plan" data-route="plan" title="Plan a trip"><span class="ic" aria-hidden="true">🗺️</span><span class="label">Plan a trip</span></a>
+        <a class="nav-link" href="#/discover" data-route="discover" title="Find my destination"><span class="ic" aria-hidden="true">✨</span><span class="label">Find my destination</span></a>
+        <a class="nav-link" href="#/trips" data-route="trips" title="My trips"><span class="ic" aria-hidden="true">🧳</span><span class="label">My trips</span><span class="nav-badge hidden" id="trips-count"></span></a>
+        <div class="nav-section">Explore</div>
+        <a class="nav-link" href="#/nearby" data-route="nearby" title="Nearby places"><span class="ic" aria-hidden="true">📍</span><span class="label">Nearby places</span></a>
+        <a class="nav-link" href="#/lens" data-route="lens" title="Travel Lens"><span class="ic" aria-hidden="true">📷</span><span class="label">Travel Lens</span></a>
+        <a class="nav-link" href="#/foryou" data-route="foryou" title="For you"><span class="ic" aria-hidden="true">💜</span><span class="label">For you</span></a>
+        <a class="nav-link" href="#/chat" data-route="chat" title="Travel buddy"><span class="ic" aria-hidden="true">💬</span><span class="label">Travel buddy</span></a>
+        <div class="nav-section">App</div>
+        <a class="nav-link" href="#/demo" data-route="demo" title="Demo showcase"><span class="ic" aria-hidden="true">🎬</span><span class="label">Demo showcase</span></a>
+        <a class="nav-link" href="#/settings" data-route="settings" title="Settings"><span class="ic" aria-hidden="true">⚙️</span><span class="label">Settings</span></a>
+      </nav>
       <div class="sidebar-foot">
-        <div class="card" style="padding:14px">
-          <div class="small" style="font-weight:700">Gemma 4 status</div>
-          <div id="ai-status" class="tiny muted">Checking…</div>
-        </div>
+        <a class="status-card" href="#/settings" title="Gemma 4 status">
+          <span class="status-dot" id="ai-dot" aria-hidden="true"></span>
+          <span class="label"><b>Gemma 4 status</b><span id="ai-status" class="tiny">Checking…</span></span>
+        </a>
       </div>
     </aside>
 
@@ -49,7 +53,7 @@
         <div class="topbar-title" id="page-title">Wanderly</div>
         <span id="provider-badge" class="badge-ai hidden"><span class="dot"></span><span></span></span>
         <label class="demo-toggle" title="Use built-in demo data (works offline)">
-          <span class="switch"><input type="checkbox" id="demo-switch"><span></span></span>
+          <span class="switch"><input type="checkbox" id="demo-switch" aria-label="Demo mode"><span></span></span>
           <span>Demo</span>
         </label>
       </header>
