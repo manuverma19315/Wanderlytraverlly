@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs><linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9907a"/><stop offset="1" stop-color="#c7604c"/></linearGradient></defs>
+  <rect width="800" height="600" fill="url(#wall)"/>
+  <g fill="#b54f3d" opacity=".55"><path d="M0 0h800v40H0z"/><path d="M60 40h60v40H60zM300 40h60v40h-60zM540 40h60v40h-60z"/></g>
+  <rect x="100" y="150" width="600" height="300" rx="14" fill="#0f6b3f" stroke="#f3f3f3" stroke-width="10"/>
+  <g font-family="Nirmala UI, Mangal, Noto Sans Devanagari, sans-serif" fill="#ffffff" text-anchor="middle">
+    <text x="400" y="240" font-size="46" font-weight="700">गुलाबी नगर जयपुर में</text>
+    <text x="400" y="296" font-size="46" font-weight="700">आपका स्वागत है</text>
+    <text x="400" y="356" font-size="32" fill="#ffe28a">पधारो म्हारे देस</text>
+    <text x="400" y="410" font-size="26">कृपया शहर को स्वच्छ रखें</text>
+  </g>
+  <rect x="180" y="450" width="16" height="150" fill="#555"/><rect x="604" y="450" width="16" height="150" fill="#555"/>
+</svg>

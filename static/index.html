@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wanderly · Gemma 4 Travel Planner</title>
+  <meta name="description" content="AI travel planner powered by Gemma 4: itineraries, nearby places, photo lens, recommendations.">
+  <meta name="theme-color" content="#5b47e0">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+  <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try { const t = JSON.parse(localStorage.getItem('wanderly.settings') || '{}').theme; if (t && t !== 'system') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#/">
+        <span class="brand-logo">🧭</span>
+        <span>Wanderly<small>POWERED BY GEMMA 4</small></span>
+      </a>
+      <div class="nav-section">Plan</div>
+      <a class="nav-link" href="#/" data-route=""><span class="ic">🏠</span>Home</a>
+      <a class="nav-link" href="#/plan" data-route="plan"><span class="ic">🗺️</span>Plan a trip</a>
+      <a class="nav-link" href="#/discover" data-route="discover"><span class="ic">✨</span>Find my destination</a>
+      <a class="nav-link" href="#/trips" data-route="trips"><span class="ic">🧳</span>My trips</a>
+      <div class="nav-section">Explore</div>
+      <a class="nav-link" href="#/nearby" data-route="nearby"><span class="ic">📍</span>Nearby places</a>
+      <a class="nav-link" href="#/lens" data-route="lens"><span class="ic">📷</span>Travel Lens</a>
+      <a class="nav-link" href="#/foryou" data-route="foryou"><span class="ic">💜</span>For you</a>
+      <a class="nav-link" href="#/chat" data-route="chat"><span class="ic">💬</span>Travel buddy</a>
+      <div class="nav-section">App</div>
+      <a class="nav-link" href="#/demo" data-route="demo"><span class="ic">🎬</span>Demo showcase</a>
+      <a class="nav-link" href="#/settings" data-route="settings"><span class="ic">⚙️</span>Settings</a>
+      <div class="sidebar-foot">
+        <div class="card" style="padding:14px">
+          <div class="small" style="font-weight:700">Gemma 4 status</div>
+          <div id="ai-status" class="tiny muted">Checking…</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <a class="mobile-brand brand-logo" href="#/" aria-label="Home">🧭</a>
+        <div class="topbar-title" id="page-title">Wanderly</div>
+        <span id="provider-badge" class="badge-ai hidden"><span class="dot"></span><span></span></span>
+        <label class="demo-toggle" title="Use built-in demo data (works offline)">
+          <span class="switch"><input type="checkbox" id="demo-switch"><span></span></span>
+          <span>Demo</span>
+        </label>
+      </header>
+      <main class="view" id="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Mobile navigation">
+    <a href="#/" data-route=""><span class="ic">🏠</span>Home</a>
+    <a href="#/plan" data-route="plan"><span class="ic">🗺️</span>Plan</a>
+    <a href="#/nearby" data-route="nearby"><span class="ic">📍</span>Nearby</a>
+    <a href="#/lens" data-route="lens"><span class="ic">📷</span>Lens</a>
+    <a href="#/chat" data-route="chat"><span class="ic">💬</span>Chat</a>
+    <a href="#/more" data-route="more"><span class="ic">☰</span>More</a>
+  </nav>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <script src="/static/vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
