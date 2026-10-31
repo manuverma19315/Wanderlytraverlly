@@ -1,4 +1,4 @@
-# 🧭 Wanderly: AI Travel Planner powered by Gemma 4
+# 🧭 Wanderlytraverlly : AI Travel Planner powered by Gemma 4
 
 Plan trips, discover nearby gems, identify landmarks from a photo and get personal recommendations.
 Everything runs in **one FastAPI app** (frontend + backend), uses **browser localStorage instead of a database**,
