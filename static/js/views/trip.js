@@ -51,7 +51,7 @@ export async function render(el, { arg, name }) {
       </div>
     </section>
 
-    <div class="grid grid-4" style="margin:18px 0">
+    <div class="grid grid-4 stats-grid" style="margin:18px 0">
       <div class="card stat"><b>${trip.days.length}</b><span>days</span></div>
       <div class="card stat"><b id="stop-count"></b><span>stops planned</span></div>
       <div class="card stat"><b>${money(trip.budget?.total, trip.currency)}</b><span>estimated total</span></div>
